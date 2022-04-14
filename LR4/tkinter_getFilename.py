@@ -10,7 +10,7 @@ root.title('Postlab 2')
 root.resizable(False, False)
 
 #Text display
-text = tk.Text(root, height=12)
+text = tk.Text(root, height=10)
 text.grid(column=0, row=0, sticky='nsew')
 
 #Button click function
@@ -23,7 +23,7 @@ def file_select():
 
 #Button object
 button = ttk.Button(root, text="Select File",command=file_select)
-button.grid(column=1, row=0, stick='w', padx=10, pady=10)
+button.grid(column=1, row=1, stick='w', padx=10, pady=10)
 
 #Mainloop
 root.mainloop()
