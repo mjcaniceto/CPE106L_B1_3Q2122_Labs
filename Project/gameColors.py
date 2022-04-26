@@ -53,3 +53,18 @@ tileNum_color = {
     512: "#ffffff",
     2048: "#ffffff"
 }
+
+#Tile number fonts
+tileNum_font = {
+    2: ("Helvetica", 55, "bold"),
+    4: ("Helvetica", 55, "bold"),
+    8: ("Helvetica", 55, "bold"),
+    16: ("Helvetica", 50, "bold"),
+    32: ("Helvetica", 50, "bold"),
+    64: ("Helvetica", 50, "bold"),
+    128: ("Helvetica", 45, "bold"),
+    256: ("Helvetica", 45, "bold"),
+    512: ("Helvetica", 45, "bold"),
+    1024: ("Helvetica", 40, "bold"),
+    2048: ("Helvetica", 40, "bold"),
+}
