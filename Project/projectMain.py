@@ -18,6 +18,36 @@ class Game(tk.Frame):
         self.startGame()
  
         self.mainloop()
+   
+   def GUI(self):
+        #Initiate board
+        self.tiles = []
+        for i in range(4):
+            row = []
+            for j in range(4):
+                tileFrame = tk.Frame(
+                    self.mainGrid,
+                    bg = color.emptyTile_color,
+                    width = 160,
+                    height = 160
+                )
+                tileFrame.grid(row = i, column = j, padx = 5, pady = 5)
+                tileNum = tk.Label(self.mainGrid, bg = color.emptyTile_color)
+                tileData = {"frame":tileFrame, "number": tileNum}
+
+                tileNum.grid(row=i, column=j)
+                row.append(tileData)
+            self.tiles.append(row)
+
+        scoreFrame = tk.Frame(self)
+        scoreFrame.place(relx=0.5, y = 45, anchor="center")
+        tk.Label(
+            scoreFrame,
+            text = "Score",
+            font = color.scoreLabel_font
+        ).grid(row=0)
+        self.scoreLabel = tk.Label(scoreFrame, text = "0", font = color.score_font)
+        self.scoreLabel.grid(row = 1)
   
   
   
