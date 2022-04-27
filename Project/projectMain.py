@@ -48,7 +48,35 @@ class Game(tk.Frame):
         ).grid(row=0)
         self.scoreLabel = tk.Label(scoreFrame, text = "0", font = color.score_font)
         self.scoreLabel.grid(row = 1)
-  
+ 
+def startGame(self):
+        #Construct 4x4 matrix
+        self.matrix = [[0] * 4 for _ in range(4)]
+
+        #Summon 2 random-valued tiles
+        row = random.randint(0,3)
+        col = random.randint(0,3)
+        self.matrix[row][col] = 2
+        self.tiles[row][col]["frame"].configure(bg = color.tile_color[2])
+        self.tiles[row][col]["number"].configure(
+            bg = color.tile_color[2],
+            fg = color.tileNum_color[2],
+            font = color.tileNum_font[2],
+            text = "2"
+        )
+        while(self.matrix[row][col] != 0):
+            row = random.randint(0,3)
+            col = random.randint(0,3)
+        self.matrix[row][col] = 2
+        self.tiles[row][col]["frame"].configure(bg = color.tile_color[2])
+        self.tiles[row][col]["number"].configure(
+            bg = color.tile_color[2],
+            fg = color.tileNum_color[2],
+            font = color.tileNum_font[2],
+            text = "2"
+        )
+
+        self.score = 0
   
   
 
