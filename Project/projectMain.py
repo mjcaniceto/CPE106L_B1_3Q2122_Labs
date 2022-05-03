@@ -118,6 +118,64 @@ def merge(self):
             row = random.randint(0,3)
             col = random.randint(0,3)
         self.matrix[row][col] = random.choice([2,4])  
+      
+    def updateGUI(self):
+        for i in range(4):
+            for j in range(4):
+                tileValue = self.matrix[i][j]
+                if tileValue == 0:
+                    self.tiles[i][j]["frame"].configure(bg = color.emptyTile_color)
+                    self.tiles[i][j]["number"].configure(bg = color.emptyTile_color, text="")
+                else:
+                    self.tiles[i][j]["frame"].configure(bg = color.tile_color[tileValue])
+                    self.tiles[i][j]["number"].configure(
+                        bg = color.tile_color[tileValue],
+                        fg = color.tileNum_color[tileValue],
+                        font = color.tileNum_font[tileValue],
+                        text = str(tileValue)
+                    )
+        self.scoreLabel.configure(text = self.score)
+        self.update_idletasks()
+    
+    def left(self, event):
+        self.stack()
+        self.merge()
+        self.stack()
+        self.addRandomTile()
+        self.updateGUI()
+        self.gameOver()
+
+    def right(self, event):
+        self.shift()
+        self.stack()
+        self.merge()
+        self.stack()
+        self.shift()
+        self.addRandomTile()
+        self.updateGUI()
+        self.gameOver()
+
+    def up(self, event):
+        self.transpose()
+        self.stack()
+        self.merge()
+        self.stack()
+        self.transpose()
+        self.addRandomTile()
+        self.updateGUI()
+        self.gameOver()
+
+    def down(self, event):
+        self.transpose()
+        self.shift()
+        self.stack()
+        self.merge()      
+        self.stack()
+        self.shift()
+        self.transpose()
+        self.addRandomTile()
+        self.updateGUI()
+        self.gameOver()
 
 def main():
     Game()
