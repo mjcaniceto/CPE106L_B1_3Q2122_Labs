@@ -176,6 +176,42 @@ def merge(self):
         self.addRandomTile()
         self.updateGUI()
         self.gameOver()
+      
+      def possible_horizontalMove(self):
+        for i in range(4):
+            for j in range(3):
+                if self.matrix[i][j] == self.matrix[i][j + 1]:
+                    return True
+        return False
+
+    def possible_verticalMove(self):
+        for i in range(3):
+            for j in range(4):
+                if self.matrix[i][j] == self.matrix[i + 1][j]:
+                    return True
+        return False
+    
+    def gameOver(self):
+        if any(2048 in row for row in self.matrix):
+            gameOver_frame = tk.Frame(self.grid_main, borderwidth=2)
+            gameOver_frame.place(relx = 0.5, rely = 0.5, anchor = "center")
+            tk.Label(
+                gameOver_frame,
+                text = "YOU WIN!!",
+                bg = color.youWin_bg,
+                fg = color.gameOver_fontColor,
+                font = color.gameOver_font
+            ).pack()
+        elif not any(0 in row for row in self. matrix) and not self.possible_horizontalMove() and not self.possible_verticalMove():
+            gameOver_frame = tk.Frame(self.grid_main, borderwidth=2)
+            gameOver_frame.place(relx = 0.5, rely = 0.5, anchor = "center")
+            tk.Label(
+                gameOver_frame,
+                text = "YOU LOSE!!!",
+                bg = color.youLose_bg,
+                fg = color.gameOver_fontColor,
+                font = color.gameOver_font
+            ).pack()
 
 def main():
     Game()
