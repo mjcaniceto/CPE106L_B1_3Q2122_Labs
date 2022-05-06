@@ -4,3 +4,12 @@ lineCount = 0
 for line in file:
     lineCount = lineCount + 1
 print("The file contains",lineCount,"lines.")
+while True:
+    selectedLine = 0
+    num = int(input("Select line [0 to quit]: "))
+    if num >=1 and num <= lineCount:
+        file = open(selectedFile, 'r')
+        for lines in file:
+            selectedLine = selectedLine + 1
+            if selectedLine == num:
+                print(lines)
