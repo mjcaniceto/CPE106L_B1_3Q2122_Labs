@@ -1,6 +1,5 @@
-selectedFile = input("Enter file name: ")
-file = open(selectedFile, 'r', encoding ='utf-8')
-lineCount = 0
-for line in file:
-    lineCount = lineCount + 1
-print("The file contains",lineCount,"lines.")
+elif num == 0:
+        break
+    else:
+        if num != lineCount:
+            print("ERROR: line number must be less than" + lineCount)
