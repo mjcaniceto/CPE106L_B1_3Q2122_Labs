@@ -1,0 +1,6 @@
+selectedFile = input("Enter file name: ")
+file = open(selectedFile, 'r', encoding ='utf-8')
+lineCount = 0
+for line in file:
+    lineCount = lineCount + 1
+print("The file contains",lineCount,"lines.")
