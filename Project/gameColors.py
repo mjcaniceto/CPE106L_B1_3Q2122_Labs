@@ -7,14 +7,26 @@ board_color= "#b8afa9"
 #Empty tile color
 emptyTile_color= "#ffd5b5"
 
+#User entrybox font
+userEntry_font = ("Monaco", 15, "bold")
+
 #"Score" label font
-scoreLabel_font= ("Verdana", 20)
+scoreLabel_font= ("Impact", 20)
 
 #Score font
-score_font= ("Helvetica", 40, "bold")
+score_font= ("Lucida Console", 40, "bold")
+
+#Leaderboards font
+leaderboard_font = ("Lucida Console", 50, "bold")
+
+#Leaderboard title
+leaderTitle_font = ("Monaco", 40, "bold")
+
+#Leaderboard contents
+leaderItem_font = ("Lucida Console", 20, "bold")
 
 #Game over text font
-gameOver_font = ("Helvetica", 48, "bold")
+gameOver_font = ("Verdana", 48, "bold")
 
 #Game over text color
 gameOver_fontColor= "#ffffff"
