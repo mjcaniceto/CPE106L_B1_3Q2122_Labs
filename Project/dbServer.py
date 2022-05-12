@@ -11,3 +11,10 @@ def connect():
     user TEXT NOT NULL, userScore INT NOT NULL); """)
     db.commit()
     db.close()
+    
+#Input usernames and scores to the database
+def submitScore(aUserName, aScore):
+    db = sqlite3.connect("gameLeaderboards.db")
+    cursor = db.cursor()
+    cursor.execute("INSERT INTO gameLeaderboards (user, userScore) VALUES (?,?)", (aUserName, aScore))
+    db.commit()
