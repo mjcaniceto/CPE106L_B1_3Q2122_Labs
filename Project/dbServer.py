@@ -18,7 +18,8 @@ def submitScore(aUserName, aScore):
     cursor = db.cursor()
     cursor.execute("INSERT INTO gameLeaderboards (user, userScore) VALUES (?,?)", (aUserName, aScore))
     db.commit()
-    
+ 
+#Get data from the database in descending order as to get a sorted list
 def displayScore():
     db = sqlite3.connect("gameLeaderboards.db")
     cursor = db.cursor()
@@ -26,3 +27,10 @@ def displayScore():
     values = cursor.fetchall()
     db.close()
     return values
+
+#Delete the table from the database 
+def delete():
+    db = sqlite3.connect("gameLeaderboards.db")
+    cursor = db.cursor()
+    cursor.execute("DROP TABLE IF EXISTS gameLeaderboards")
+    db.close()
