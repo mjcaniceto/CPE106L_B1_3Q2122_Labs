@@ -18,3 +18,11 @@ def submitScore(aUserName, aScore):
     cursor = db.cursor()
     cursor.execute("INSERT INTO gameLeaderboards (user, userScore) VALUES (?,?)", (aUserName, aScore))
     db.commit()
+    
+def displayScore():
+    db = sqlite3.connect("gameLeaderboards.db")
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM gameLeaderboards ORDER BY userScore DESC LIMIT 9")
+    values = cursor.fetchall()
+    db.close()
+    return values
