@@ -327,3 +327,107 @@ def start_game(game_board):
             )
 
             self.score = 0
+
+            def showLeaderboards(self):
+            leadList = db.displayScore()
+            rankNum = 1
+            yValue = 250
+            for item in leadList:
+                leadRank = tk.Label(self, text = rankNum, font = color.leaderItem_font)
+                leadRank.place(relx = 0.15, y = yValue, anchor = "center")
+
+                leadUser = tk.Label(self, text = item[0], font = color.leaderItem_font)
+                leadUser.place(relx = 0.5, y = yValue, anchor = "center")
+
+                leadScore = tk.Label(self, text = item[1], font = color.leaderItem_font)
+                leadScore.place(relx = 0.85, y = yValue, anchor = "center")
+                rankNum = rankNum + 1
+                yValue = yValue + 60
+
+        def leaderboards(self, *args):
+            global score
+            self.mainGrid.destroy()
+            self.scoreLabel.destroy()
+            self.grid()
+            self.master.title("2048 Game")
+            self.mainGrid = tk.Frame(
+                self, bg = color.board_color, bd = 3, width = 600, height = 600
+            )
+            self.master.resizable(False, False)
+            self.mainGrid.grid(pady = (110,0))
+            scoreFrame = tk.Frame(self)
+            scoreFrame.place(relx=0.5, y = 45, anchor="center")
+            tk.Label(
+                scoreFrame,
+                text = "",
+                font = color.scoreLabel_font
+            ).grid(row = 0)
+            self.scoreLabel = tk.Label(scoreFrame, text = 'LEADERBOARDS', font = color.leaderboard_font)
+            self.scoreLabel.grid(row = 1)
+            for i in range(250, 800, 90):
+                leadItem_frame = tk.Frame(
+                    self, bg = color.gameOver_fontColor, bd = 3, width = 600, height = 90)
+                leadItem_frame.place(relx = 0.5, y = i, anchor = "center")
+            for j in range(250, 745, 60):
+                leadItem_frame = tk.Frame(
+                    self, bg = color.emptyTile_color, bd = 3, width = 590, height = 50)
+                leadItem_frame.place(relx = 0.5, y = j, anchor = "center")
+            rankLabel = tk.Label(text = "Rank")
+            rankLabel.place(x = 18, y = 120)
+            rankLabel.config(font = color.leaderTitle_font, padx = 0)
+            userLabel = tk.Label(text = "Username")
+            userLabel.place(x = 155, y = 120)
+            userLabel.config(font = color.leaderTitle_font, padx = 0)
+            scoreLabel = tk.Label(text = "Score")
+            scoreLabel.place(x = 420, y = 120)
+            scoreLabel.config(font = color.leaderTitle_font, padx = 0)
+            self.showLeaderboards()          
+        
+    def main():
+        Game()
+
+    if _name_ == "_main_":
+        main()
+
+def about():
+    def openText():
+        textFile = open("About.txt", 'r')
+        text = textFile.read()
+
+        aboutText.insert(END, text)
+        textFile.close()
+
+    aboutWin = tk.Toplevel()
+    aboutWin.title("About")
+    aboutWin.geometry("600x600")
+
+    aboutText = tk.Text(aboutWin, fg = color.board_color, bg = "#fcefe6", width = 50, height = 50, font = color.userEntry_font, padx = 2, pady = 2)
+    aboutText.pack()
+    openText()
+
+
+def main_screen():
+
+    screen = Tk()
+    screen.geometry("600x750")
+    screen.configure(bg = "#fcefe6")
+    start = partial(start_game, screen)
+
+    #icon
+    image_icon = PhotoImage(file="icon.png")
+    screen.iconphoto(False,image_icon)
+    screen.title("2048 Game")
+    screen.resizable(False,False)
+
+    lbltitle = Label(text = "2048 Game", font = color.gameOver_font, fg ='#695c57', bg = "#fcefe6")
+    lbltitle.place(x = 90, y = 130)
+
+    
+    Button(screen, text = "Start", font = color.userEntry_font, height = 5, width = 20, bg = "#b8afa9", fg = "white", bd = 0, command = start).place(x = 187, y = 300)
+    Button(screen, text = "About", font = color.userEntry_font, height = 5, width = 20, bg = "#b8afa9", fg = "white", bd = 0, command = about).place(x = 187, y = 440)
+
+
+    screen.mainloop()
+
+    
+main_screen()
