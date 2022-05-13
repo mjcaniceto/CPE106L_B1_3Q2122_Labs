@@ -328,7 +328,7 @@ def start_game(game_board):
 
             self.score = 0
 
-            def showLeaderboards(self):
+        def showLeaderboards(self):
             leadList = db.displayScore()
             rankNum = 1
             yValue = 250
