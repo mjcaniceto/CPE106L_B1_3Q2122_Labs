@@ -1,0 +1,9 @@
+Submitted as a project submission requirement for the course CPE106L - Software Design, this game is inspired by Mr. Gabriele Cirulli's 2048 mobile game.
+
+The group behind this project is composed of Martin Julian Aniceto, Patrick John Figarola, and Christian Pablico. 
+
+The software is constructed using applications of python, tkinter, Github, Git, and SQLite database concepts learned from the course. 
+
+DIRECTIONS: In playing the game: W, A, S, D or arrow keys can be used to slide and manipulate the tiles. To finish the game, one must obtain the file with the value '2048.'Otherwise, all scores and usernames are inserted into the leaderboards. 
+
+Good luck climbing the leaderboards and have fun!
